@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Button, Form } from 'react-bootstrap';
 
 class ToDoForm extends Component {
     
@@ -20,18 +21,18 @@ class ToDoForm extends Component {
     render() {
         return ( 
             <div>
-                <label for="todo">Add Todo</label>
-                <form onSubmit={this.handleSubmit}>
-                <input 
-                type="text" 
-                id="todo" 
-                placeholder="Add a Task" 
-                ref={a => {
+                <Form onSubmit={this.handleSubmit}>
+                <Form.Group className="mb-2">
+                    <Form.Control
+                    size="lg"
+                    type="text"
+                    ref={a => {
                     this._inputElement = a;
-                }}
-                />
-                <button type="submit">Add</button>
-                </form>
+                }} 
+                    placeholder="Add a Todo" />
+                 </Form.Group>
+                <Button type="submit" size="lg" className="mb-2" variant="primary">Add</Button>
+                </Form>
             </div>
              );
     }

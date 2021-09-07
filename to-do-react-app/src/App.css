@@ -47,13 +47,24 @@
   color: white;
 }
 
-.todoListContainer {
-  background-color: aliceblue;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: #61dafb;
-  display: flex;
-  min-height: 50vh;
+.todoFormContainer {
+  width: 500px;
+}
 
+.todoListContainer {
+  background-color: #f0f0f0;
+  color: black;
+  width: 500px;
+  height: auto;
+  align-items: stretch;
+  border: 5px rgb(35, 58, 85) solid;
+}
+
+.todoItem {
+  text-align: left;
+}
+
+.removeButton {
+  margin: 0px 2px;
+  float:right;
 }
