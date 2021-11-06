@@ -15,16 +15,20 @@ class App extends Component {
     this.state = {list: [] };
     this.addToDo = this.addToDo.bind(this);
     this.removeToDo = this.removeToDo.bind(this);
+    this.checkToDo = this.checkToDo.bind(this);
+
 
   }
 
   addToDo = (value) => {
     let newItem = {
       text: value,
+      checked:false,
       key: id++,
     };
     this.state.list.push(newItem)
     this.setState({list: this.state.list});
+    console.log('this.state.list',this.state.list);
   }
 
   removeToDo = (key) => {
@@ -38,6 +42,14 @@ class App extends Component {
     this.setState({list:remainderArray})
   }
 
+  checkToDo = (key) => {
+    let checkedArray = [...this.state.list];
+    let itemIndex = checkedArray.findIndex((item) => item.key === key);
+    checkedArray[itemIndex].checked = true;
+    this.setState(checkedArray);
+  }
+  
+
   render() {
     return (
       <div className="App">
@@ -47,7 +59,7 @@ class App extends Component {
           <ToDoForm addToDo={this.addToDo}/>
           </div>
           <div style={(this.state.list.length===0) ? {display:"none"} : {display:"block"}}>
-          <TodoList list={this.state.list} removeToDo={this.removeToDo}/>
+          <TodoList list={this.state.list} removeToDo={this.removeToDo} checkToDo={this.checkToDo}/>
           </div>
         </div>
       </div>

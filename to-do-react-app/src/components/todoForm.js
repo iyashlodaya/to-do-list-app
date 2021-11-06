@@ -9,29 +9,30 @@ class ToDoForm extends Component {
     }
 
     handleSubmit = (e) => {
-        if (this._inputElement.value !== "") {
+        if (this._inputElement.value.trim() !== "") {
             this.props.addToDo(this._inputElement.value);
             this._inputElement.value = "";
         };
         e.preventDefault();
     }
 
-
-
     render() {
         return ( 
             <div>
                 <Form onSubmit={this.handleSubmit}>
-                <Form.Group className="mb-2">
+                <Form.Group className="mb-2 mt-4">
                     <Form.Control
+                    autoFocus
                     size="lg"
+                    id="text-input"
                     type="text"
                     ref={a => {
                     this._inputElement = a;
                 }} 
-                    placeholder="Add a Todo" />
+                    placeholder="Add a Task"
+                    required />
                  </Form.Group>
-                <Button type="submit" size="lg" className="mb-2" variant="primary">Add</Button>
+                <Button type="submit" size="lg" className="mb-2 mt-4 w-25" variant="primary">Add</Button>
                 </Form>
             </div>
              );
